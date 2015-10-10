@@ -1,0 +1,14 @@
+# Apache configuration file (see httpd.apache.org/docs/2.2/mod/quickreference.html)
+
+AddDefaultCharset UTF-8
+
+RewriteEngine on 
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Default single page web application with router
+RewriteRule ^(.*)$ index.php?r=$1 [L,QSA]
+
+# PrettyUrl Yii mode
+#RewriteRule . index.php

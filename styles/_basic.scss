@@ -1,0 +1,111 @@
+//==============================================================================
+//  Title      : Basic SCSS mixins
+//  Author     : Digger (c) SAD-Systems <http://sad-systems.ru>
+//  Created on : 29.06.2015
+//==============================================================================
+
+//--- Examples:
+
+// @include border-radius(800px);
+// @include background-size(cover);
+// @include box-shadow(0px 0px 15px black);
+// @include text-shadow(#666666 5px 5px 5px);
+// @include opacity(95); 
+// @include opacity(0.95);
+// @include linear-gradient(red);
+// @include transition(color 1s ease);
+
+//--- css-polyfills-file -------------------------------------------------------
+
+//$css-polyfills-path : 'css/polyfills';
+
+@function get-css-polyfills-file($file, $default-path: 'css/polyfills' ) {
+    @if variable-exists('css-polyfills-path') {
+        @return $css-polyfills-path + '/' + $file;
+    } @else {
+        @return $default-path + '/' + $file;
+    }
+}
+
+//------------------------------------------------------------------------------
+
+@mixin border-radius($value...) {
+    -moz-border-radius: $value;
+    -webkit-border-radius: $value;
+    //behavior: url('styles/ie-css3.htc'); // IE (very bad)
+    border-radius: $value;
+}
+
+@mixin background-size($value, $ie_image: null) {   // cover
+  @if $ie_image != null {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$ie_image}', sizingMethod='scale');       // IE6
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$ie_image}', sizingMethod='scale')"; // IE7                                                       
+  }     
+  -ms-behavior: url(get-css-polyfills-file('backgroundsize.min.htc')); // IE8  The url is relative to the document, not to the css file!
+  -webkit-background-size: $value; // Safari и Chrome
+  -moz-background-size: $value;    // Mozilla 
+  -khtml-background-size: $value;  // Konqueror
+  -o-background-size: $value;      // Opera
+  background-size: $value;         // CSS3
+}
+
+@mixin box-shadow($value...) { // 5px 5px 2px rgba(0,0,0, 0.5);
+  //-ms-behavior: url('#{$css-polyfills-path}/ie-css3.htc'); // IE6-8 (do not working with fixed property)
+  -webkit-box-shadow: $value;  // Safari и Chrome 
+  -moz-box-shadow: $value;     // Firefox
+  -khtml-box-shadow: $value;   // Konqueror
+  box-shadow: $value;          // CSS3
+}
+
+@mixin text-shadow ($value...) { //#666666 5px 5px 5px
+    text-shadow: $value;
+    //filter: Shadow(Color=#666666, Direction=135, Strength=5); // IE
+}
+
+@mixin opacity($value) { // 0.5 | 50
+  @if $value > 1 {
+      $opacity: $value / 100;
+      $opacity_ie: $value;
+  } @else {
+      $opacity: $value;
+      $opacity_ie: $value*100;      
+  }
+  -moz-opacity: $opacity;   // Mozilla 1.6 и ниже
+  -khtml-opacity: $opacity; // Konqueror 3.1, Safari 1.1
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=#{$opacity_ie}); // IE 5.5+
+  opacity: $opacity;        // CSS3 - Mozilla 1.7b +, Firefox 0.9 +, Safari 1.2+, Opera 9
+}
+
+@mixin linear-gradient($color:(#000), $direction:top) {
+  $color-stop: ();
+  //--- Default gradient
+  @if length($color) < 2 { 
+      $main_color: nth($color,1);
+      $color:();
+      $color:append($color,lighten($main_color, 20%),comma); 
+      $color:append($color,$main_color,comma); 
+      $color:append($color,darken($main_color, 20%),comma);
+  }
+  //--- Append $color-stop  
+  @for $i from 1 through length($color) {
+    $c:nth($color,$i);
+    @if $i==1              { $start:$c }
+    @if $i==length($color) { $end:$c } 
+    $color-stop: append($color-stop, $c, comma);    
+  }
+  //--- Implement $color-stop
+  background: -ms-linear-gradient($direction, $start 0%,$end 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start}', endColorstr='#{$end}');
+  //background: -webkit-gradient(linear, left top, left bottom, from($start), to($end));
+  background: -webkit-linear-gradient($direction,  $color-stop); // For Safari 5.1 to 6.0
+  background: -moz-linear-gradient($direction,  $color-stop);    // For Firefox 3.6 to 15
+  background: -o-linear-gradient($direction,  $color-stop);      // For Opera 11.1 to 12.0
+  background: gradient(linear, $direction,  $color-stop);        // CSS3
+}
+
+@mixin transition($value...) {//top 1s ease-out 0.5s
+     -webkit-transition: $value;
+     -moz-transition: $value;
+     -o-transition: $value;
+     transition: $value;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "[title]",
+  "version": "[version]",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "[author/name] <[author/email]> ([author/homepage])",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.4.1",
+    "jsdoc": "^3.3.0-beta3",
+    "less": "^2.5.0",
+    "minimist": ""
+  }
+}
