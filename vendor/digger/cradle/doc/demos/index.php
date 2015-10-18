@@ -9,7 +9,7 @@
 $baseDir    = dirname(dirname(__DIR__));
 $configFile = $baseDir . '/config/main.php';
 
-require $baseDir . '/vendor' . '/digger/cradle/src/application/Starter.php';
+require $baseDir . '/src' . '/application/Starter.php';
 
 extract(\digger\cradle\application\Starter::getConfig($configFile, true), EXTR_OVERWRITE);
 

@@ -1,7 +1,7 @@
 {
   "name": "[title]",
   "version": "[version]",
-  "description": "",
+  "description": "[description]",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -14,7 +14,11 @@
   "dependencies": {
     "bower": "^1.4.1",
     "jsdoc": "^3.3.0-beta3",
-    "less": "^2.5.0",
+    "less": "",
+    "node-sass": "",
+    "gulp": "",
+    "gulp-less": "",
+    "gulp-sass": "",
     "minimist": ""
   }
 }

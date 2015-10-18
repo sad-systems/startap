@@ -61,7 +61,7 @@ class Starter {
                 $autoLoader = $config['autoLoader'];
             } else { 
                 //--- Register default own autoloader:
-                $autoLoader = __DIR__ . '/../../autoload.php';
+                $autoLoader = __DIR__ . '/../autoload.php';
             }
             $autoLoader = realpath($autoLoader);
             require_once $autoLoader;

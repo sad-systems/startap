@@ -17,6 +17,6 @@ $basedir    = dirname(__DIR__);
 //--- Configuration file:
 $configFile = $basedir . '/config/main.php';
 //--- Include Starter class:
-require $basedir . '/vendor' . '/digger/cradle/application/Starter.php';
+require $basedir . '/vendor' . '/digger/cradle/src/application/Starter.php';
 //--- Start application:
 digger\cradle\application\Starter::startApp($configFile);
