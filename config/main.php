@@ -25,6 +25,7 @@ return [
     'defaultRoute'  => 'site', 
     'controllerMap' => [
         'site'   => 'controllers/DummyController',
+        'page'   => 'controllers/BackboneController',
     ],
     //--- Layouts:
     'layoutPath'  => $basePath . '/views/layouts',
