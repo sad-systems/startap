@@ -6,6 +6,9 @@
  *==============================================================================
  */
 
+//--- Uncomment in production:
+ define('PRODUCTION_MODE', true);
+
 $basePath = dirname(__DIR__);
 
 return [

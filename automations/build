@@ -11,18 +11,26 @@
  * -----------------------------------------------------------------------------
  */
 
+include dirname(__DIR__) . '/config/main.php'; //<--- There is PRODUCTION_MODE may be defined
+
+echo defined('PRODUCTION_MODE') ? "PRODUCTION MODE\n" : "DEVELOPE MODE\n" ;
+
+//--- Commang line input arguments:
 $a = $argv[1];
 
+//--- Options:
 $o = [
     '',
     'css',
     'js',
 ];
 
+//--- Default option:
 if (!$a) {
     $a = $o[0];
 }
 
+//--- Set application root:
 chdir(dirname(__DIR__));
 
 if ($a==$o[0]) { 
@@ -30,7 +38,7 @@ if ($a==$o[0]) {
     echo "\n";
     echo "Build all:\n"
        . "----------------------------------\n";
-    system("gulp");    
+    defined('PRODUCTION_MODE') ? system("gulp") : system("gulp build-dev") ;    
     
 }
 
@@ -39,7 +47,7 @@ if ($a==$o[1]) {
     echo "\n";
     echo "Build css only:\n"
        . "----------------------------------\n";
-    system("gulp build-css");    
+    defined('PRODUCTION_MODE') ? system("gulp build-css") : system("gulp build-css-dev") ;    
     
 }
 
@@ -48,7 +56,7 @@ if ($a==$o[2]) {
     echo "\n";
     echo "Build javascripts only:\n"
        . "----------------------------------\n";
-    system("gulp build-js");    
+    defined('PRODUCTION_MODE') ? system("gulp build-js") : system("gulp build-js-dev") ;    
     
 }
 
