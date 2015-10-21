@@ -6,6 +6,9 @@ Thumbs.db
 # do not ignore digger-lib (comment this if you do not use digger-lib)
 !/vendor/digger
 
+# nodejs vendor modules
+/node_modules
+
 # composer itself is not needed
 composer.phar
 

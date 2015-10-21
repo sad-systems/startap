@@ -12,15 +12,20 @@ return [
         'keywords'    => '',
     ],
     'css' => [ 
-         'css/bootstrap.min.css', 
-         'css/main.css',
+        //--- Production:
+        //'css/public.min.css', //<--- see `/gulpfile.js` configuration to build 
+        //--- Develop:
+        'css/bootstrap.css', 
+        'css/main.css',
     ],
     'js'  => [ 
-         'js/jquery.min.js',
-    //   'js/jquery-ui.min.js',
-    //   'js/bootstrap.min.js',
-         'js/underscore-min.js',
-         'js/backbone-min.js',
-         'js/main.js'
+        //--- Production:
+        //'js/vendor.min.js', //<--- Vendor scriptis (jquery + underscore + backbone + ...) see `/gulpfile.js` configuration to build
+        //'js/public.min.js', //<--- Application scripts (own) see `/gulpfile.js` configuration to build
+        //--- Develop:
+        'js/jquery.min.js',
+        'js/underscore-min.js',
+        'js/backbone-min.js',
+        'js/main.js',
     ],  
 ];
