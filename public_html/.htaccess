@@ -4,11 +4,37 @@ AddDefaultCharset UTF-8
 
 RewriteEngine on 
 
+# Use compressed (gzip) CSS and JS files:
+
+RewriteCond %{HTTP:Accept-encoding} gzip
+RewriteCond %{REQUEST_FILENAME}\.gz -s
+RewriteRule ^(.*)\.css $1\.css\.gz [QSA]
+
+RewriteCond %{HTTP:Accept-encoding} gzip
+RewriteCond %{REQUEST_FILENAME}\.gz -s
+RewriteRule ^(.*)\.js $1\.js\.gz [QSA]
+
+<FilesMatch .*\.js\.gz$>
+   ForceType text/javascript
+   Header set Content-Encoding gzip
+   Header append Vary Accept-Encoding
+</FilesMatch>
+
+<FilesMatch .*\.css\.gz$>
+   ForceType text/css
+   Header set Content-Encoding gzip
+   Header append Vary Accept-Encoding
+</FilesMatch>
+
+# If request is not a real file or dir:
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # Default single page web application with router
+
 RewriteRule ^(.*)$ index.php?r=$1 [L,QSA]
 
 # PrettyUrl Yii mode
+
 #RewriteRule . index.php
