@@ -109,6 +109,24 @@ $ ./runtests
 
 To see the report of the implementation of the tests you may open file `tests/index.php` in the browser.
 
+#### Build
+
+To build your application, simply run command (from the `automations` directory):  
+
+~~~sh
+$ ./build
+~~~
+
+> File `build` should have an execute rights.
+
+or run command (from application root directory):
+
+~~~sh
+$ ./gulp
+~~~
+
+For detail information about those commands see [Structure description](structure.md#automations).
+
 ## Boilerplate structure
 
 [Structure description](structure.md)

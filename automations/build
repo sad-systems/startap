@@ -13,7 +13,7 @@
 
 include dirname(__DIR__) . '/config/main.php'; //<--- There is PRODUCTION_MODE may be defined
 
-echo defined('PRODUCTION_MODE') ? "PRODUCTION MODE\n" : "DEVELOPE MODE\n" ;
+echo defined('PRODUCTION_MODE') ? "PRODUCTION MODE\n" : "DEVELOP MODE\n" ;
 
 //--- Commang line input arguments:
 $a = $argv[1];

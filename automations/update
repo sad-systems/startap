@@ -85,11 +85,14 @@ if ($a==$o[5]) {
     echo "\n";
     echo "Templates update:\n"
        . "----------------------------------\n";
-    system("curl https://codeload.github.com/sad-systems/templates/zip/master > templates.zip\n"
-         . "unzip -o templates.zip\n"
-         . "rm -rf templates.zip\n"   
-         . "rm -rf templates\n"
-         . "mv -ufT ./templates-master ./templates");    
+    $target = "templates";
+    system("curl https://codeload.github.com/sad-systems/templates/zip/master > $target.zip\n"
+         . "unzip -oq $target.zip\n"
+         . "if [ ! -d $target ]; then mkdir $target; fi\n"
+         . "cp -rf ./templates-master/* ./$target\n"
+         . "rm -rf $target.zip\n"   
+         . "rm -rf ./templates-master\n"
+    );    
     
 }
 

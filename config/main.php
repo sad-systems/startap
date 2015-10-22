@@ -7,7 +7,7 @@
  */
 
 //--- Uncomment in production:
- define('PRODUCTION_MODE', true);
+// define('PRODUCTION_MODE', true);
 
 $basePath = dirname(__DIR__);
 

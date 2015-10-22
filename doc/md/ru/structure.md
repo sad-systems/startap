@@ -32,13 +32,14 @@
  * `update` - запускает обновление пакетных менеджеров ([NodeJS](https://nodejs.org/), [Bower](http://bower.io) и [Composer](https://getcomposer.org)).
 Имеет несколько опций для запуска:
 
-   | Опция    | Команда           | Описание                                                            |
-   |----------|-------------------|---------------------------------------------------------------------|
-   | all      | `update all`      | Запускает обновление всех пакетных менеджеров                       |
-   | node     | `update node`     | Запускает только [NodeJS](https://nodejs.org/)                      |
-   | bower    | `update bower`    | Запускает только [Bower](http://bower.io)                           |
-   | composer | `update composer` | Запускает только [Composer](https://getcomposer.org)                |
-   | autoload | `update autoload` | Обновляет автозагрузчик классов [Composer](https://getcomposer.org) |
+   | Опция     | Команда            | Описание                                                            |
+   |-----------|--------------------|---------------------------------------------------------------------|
+   | all       | `update all`       | Запускает обновление всех пакетных менеджеров                       |
+   | node      | `update node`      | Запускает только [NodeJS](https://nodejs.org/)                      |
+   | bower     | `update bower`     | Запускает только [Bower](http://bower.io)                           |
+   | composer  | `update composer`  | Запускает только [Composer](https://getcomposer.org)                |
+   | autoload  | `update autoload`  | Обновляет автозагрузчик классов [Composer](https://getcomposer.org) |
+   | templates | `update templates` | Обновляет каталог шаблонов                                          |
 
  * `docs` - для автоматической генерации документации, которая производится на основе конфигурационных файлов,
     расположенных в каталоге [config](#config): 
@@ -49,6 +50,23 @@
    `config/tests.php`
 
  * `runtests` - для запуска автоматической проверки тестов.
+
+ * `build` - для автоматической сборки приложения. Данный скрипт является "обёрткой" для запуска
+    сборщика [gulpjs](http://gulpjs.com). Параметры сборки хрянатся в файле [gulpfile.js](../../../gulpfile.js).
+   `build` ориентируется на параметр `PRODUCTION_MODE` (указываемый в конфигурационном файле: [config/main.php](../../../config/main.php))
+   и в соответствии с этим запускает:
+    - `gulp build` - для сборки `РАБОЧЕЙ` версии приложения (если установлен параметр `PRODUCTION_MODE`);
+    - `gulp build-dev` - для сборки `ОТЛАДОЧНОЙ` версии приложения (если параметр `PRODUCTION_MODE` не установлен);
+
+    Также возможен вариант запуска `build` с параметрами:
+
+    - `build css` - для сборки только css-файлов;
+    - `build js` - для сборки только javascript-файлов.
+
+> Можно использовать `gulp` напрямую:
+> - `gulp build`, `gulp build-css`, `gulp build-js` - для сборки `РАБОЧЕЙ` версии приложения
+> - `gulp build-dev`, `gulp build-css-dev`, `gulp build-js-dev` - для сборки `ОТЛАДОЧНОЙ` версии приложения
+
 
 ## config
 
