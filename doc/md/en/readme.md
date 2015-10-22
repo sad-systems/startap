@@ -81,6 +81,8 @@ At this stage package installers ([NodeJS](https://nodejs.org/), [Bower](http://
 
 <b>Create your own application!</b>
 
+#### Documenting
+
 If you need to create the documentation for your application, simply run command (from the `automations` directory):  
 
 ~~~sh
@@ -90,6 +92,8 @@ $ ./docs
 > File `docs` should have an execute rights.
 
 All the automatically generated documentation will be placed in the directory `doc`.
+
+#### Testing
 
 If you need to create the test skeletons for your application, simply run command (from the `automations` directory):  
 
