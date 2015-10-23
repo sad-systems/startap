@@ -28,6 +28,7 @@ return [
             'js/jquery.min.js',
             'js/underscore-min.js',
             'js/backbone-min.js',
+            'js/bootstrap.min.js',
             'js/main.js',
         ],  
 ];
