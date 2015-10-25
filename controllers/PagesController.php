@@ -1,6 +1,6 @@
 <?php
 /*==============================================================================
- *  Title      : Dummy Controller
+ *  Title      : Pages Controller
  *  Author     : Digger (c) SAD-Systems <http://sad-systems.ru>
  *  Created on : 03.10.2015
  *==============================================================================
@@ -15,10 +15,10 @@
  * @author Digger <mrdigger@sad-systems.ru>
  * @copyright (c) 2015, SAD-Systems
  */
-class DummyController {
+class PagesController {
     
     //--- Layout:
-    //public $layout        = 'main';
+    public $layout        = 'ajax';
     //--- Default Action:
     //public $defaultAction = 'index';
     
@@ -27,8 +27,10 @@ class DummyController {
      * 
      * @return string Name of View
      */
-    public function actionIndex() { return 'landing'; }
-
-    public function actionBackbone() { return 'backbone'; }
+    public function actionIndex() { return 'main'; }
+    public function actionMain()  {}
+    public function actionTeam()  {}
+    public function actionProjects()  {}
+    public function actionContacts()  {}
     
 }

@@ -7,9 +7,9 @@
  */
 
 return [
-    'title'       => 'Title',
-    'description' => 'Description',
-    'version'     => '1.0.0',
+    'title'       => 'SAD-Systems',
+    'description' => '',
+    'version'     => '',
     'logo'        => '',
     'author'      => [
              'name' => 'Mr Digger',

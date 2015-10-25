@@ -1,6 +1,133 @@
-/*!=============================================================================
+/*==============================================================================
  *  Title      : Main style file
  *  Author     : Digger (c) SAD-Systems <http://sad-systems.ru>
  *  Created on : 01.04.2015
  *==============================================================================
  */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  color: #fff; }
+
+html, body {
+  height: 100%; }
+
+body {
+  background-color: transparent;
+  background-image: url("../media/img/body2.jpg");
+  -ms-behavior: url("css/polyfills/backgroundsize.min.htc");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -khtml-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+a {
+  color: #56d4c7;
+  transition: color 0.5s ease; }
+  a:hover {
+    color: #a7e9e2; }
+
+header {
+  background-color: transparent;
+  background-image: url("../media/img/bg/bgb50p.png");
+  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
+  -khtml-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 100; }
+
+footer {
+  background-color: transparent;
+  background-image: url("../media/img/bg/bgb50p.png");
+  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
+  -khtml-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  padding: 1em;
+  padding-left: 7%;
+  color: #56d4c7; }
+
+.page {
+  background-color: transparent;
+  background-image: url("../media/img/bg/bgb50p.png");
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
+  position: absolute;
+  top: 6em;
+  left: 7%;
+  right: 7%;
+  bottom: 6em;
+  padding: 5%;
+  overflow: auto; }
+  .page img {
+    display: block;
+    width: 30%;
+    min-width: 64px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    float: left;
+    clear: left;
+    margin-right: 2%;
+    margin-bottom: 2%; }
+    .page img.right {
+      float: right;
+      clear: right;
+      margin-left: 2%;
+      margin-bottom: 2%; }
+  .page .align-right {
+    text-align: right; }
+  .page img + div {
+    width: 68%;
+    margin-right: 0;
+    margin-left: 32%; }
+  .page img + div.right {
+    margin-left: 0;
+    margin-right: 32%; }
+  .page h2 {
+    margin-bottom: 2%; }
+  .page p {
+    margin-bottom: 2%; }
+  .page .media-list {
+    display: table;
+    width: 100%; }
+  .page .media-list > div {
+    display: table-row; }
+
+nav {
+  text-align: right; }
+  nav ul {
+    border-top: 6px solid #56d4c7;
+    list-style-type: none;
+    padding: 0 7%; }
+    nav ul li {
+      display: inline-block;
+      padding: 1em 0.5em; }
+    nav ul li.active {
+      background-color: transparent;
+      background-image: url("../media/img/bg/bgw15p.png"); }
+      nav ul li.active a {
+        color: #fff; }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.5s ease; }
+    nav a:hover {
+      color: #56d4c7; }
+
+.logo {
+  display: block;
+  width: 90px;
+  float: left;
+  clear: left;
+  margin-top: 1em;
+  margin-left: 7%; }

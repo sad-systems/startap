@@ -8,15 +8,15 @@
 
 return [
     'meta'        => [
-        'description' => '',
-        'keywords'    => '',
+        'description' => 'The SAD-Systems company',
+        'keywords'    => 'sad-systems',
     ],
     'css' => defined('PRODUCTION_MODE') ? 
         [ //--- Production:
             'css/public.min.css', //<--- see `/gulpfile.js` configuration to build 
         ] : 
         [ //--- Develop:
-            'css/bootstrap.css', 
+        //    'css/bootstrap.css', 
             'css/main.css',
         ],
     'js'  => defined('PRODUCTION_MODE') ? 
@@ -28,7 +28,9 @@ return [
             'js/jquery.min.js',
             'js/underscore-min.js',
             'js/backbone-min.js',
-            'js/bootstrap.min.js',
+        //    'js/bootstrap.min.js',
+            
+            'js/typewriter.js',
             'js/main.js',
         ],  
 ];

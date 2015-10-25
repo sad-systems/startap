@@ -5,19 +5,209 @@
  *==============================================================================
  */
 
-@import "basic";     //--- Digger basic mixins
+@import "basic";               //--- Digger basic mixins
+//@import "bootstrap/normalize"; //--- Reset
 
 //------------------------------------------------------------------------------
 // Main definitions
 //------------------------------------------------------------------------------
 
+//--- banners:
+$img_banner: url("../media/img/body2.jpg");
+//--- transparent black:
+$img_black_15: url("../media/img/bg/bgb15p.png");
+$img_black_25: url("../media/img/bg/bgb25p.png");
+$img_black_50: url("../media/img/bg/bgb50p.png");
+$img_black_75: url("../media/img/bg/bgb75p.png");
+//--- patterns
+$img_ptblack_15: url("../media/img/bg/ptb15p.png");
+$img_ptblack_50: url("../media/img/bg/ptb50p.png");
+$img_ptblack_75: url("../media/img/bg/ptb75p.png");
+$img_ptblack_90: url("../media/img/bg/ptb90p.png");
+//--- transparent white:
+$img_white_15: url("../media/img/bg/bgw15p.png");
+$img_white_25: url("../media/img/bg/bgw25p.png");
+$img_white_50: url("../media/img/bg/bgw50p.png");
+$img_white_75: url("../media/img/bg/bgw75p.png");
+$img_white_90: url("../media/img/bg/bgw90p.png");
+
+//--- colors:
+$c_theme: #56d4c7;
+$c_text:  #fff;
+
+//--- text:
+$c_link:       $c_theme;
+$c_link_hover: lighten($c_theme, 20%);
+$c_footer: $c_theme;
+
+$c_nav_link:        #fff;
+$c_nav_link_hover:  $c_theme;
+$c_nav_link_active: #fff;
+//--- images:
+$img_body:      $img_banner;
+$img_bg_header: $img_black_50;
+$img_bg_footer: $img_black_50;
+$img_bg_page:   $img_black_50;
+$img_bg_nav_active: $img_white_15;
+
 //------------------------------------------------------------------------------
 // Common styles
 //------------------------------------------------------------------------------
 
+
+
 //------------------------------------------------------------------------------
 // Device dependent styles
 //------------------------------------------------------------------------------
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    color: $c_text;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: transparent;
+    background-image: $img_body;
+    @include background-size(cover);
+}
+
+a { 
+    color: $c_link; 
+    transition: color 0.5s ease;
+    &:hover {
+        color: $c_link_hover;
+    }
+}
+
+header {
+    background-color: transparent;
+    background-image: $img_bg_header;
+    @include box-shadow(0px 0px 15px rgba(0,0,0, 0.75));
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    //padding: 1em;
+    z-index: 100;
+}
+
+footer {
+    background-color: transparent;
+    background-image: $img_bg_footer;
+    @include box-shadow(0px 0px 15px rgba(0,0,0, 0.75));
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    padding: 1em;
+    padding-left: 7%;
+    color: $c_footer;
+}
+
+.page {
+    background-color: transparent;
+    background-image: $img_bg_page;
+    @include border-radius(7px);
+    position: absolute;
+    top:    6em;
+    left:   7%;
+    right:  7%;
+    bottom: 6em;
+    padding: 5%;
+    overflow: auto;
+
+    img {
+        display: block;
+        width: 30%;
+        min-width: 64px;
+        @include border-radius(7px);
+    //--- Left (by default):
+        float: left;
+        clear: left;
+        margin-right: 2%;
+        margin-bottom: 2%;
+    //--- Right:
+        &.right {
+            float: right;
+            clear: right;
+            margin-left: 2%;
+            margin-bottom: 2%;
+        }
+    }
+
+    .align-right {
+        text-align: right;
+    }
+
+    img + div {
+        width: 68%;
+        margin-right: 0;
+        margin-left: 30% + 2%;
+    }
+
+    img + div.right {
+        margin-left: 0;
+        margin-right: 30% + 2%;
+    }
+    
+    h2 {
+        margin-bottom: 2%;
+    }
+
+    p {
+        margin-bottom: 2%;
+    }
+    
+    .media-list {
+        display:table; width:100%
+    }
+    .media-list > div {
+        display: table-row
+    }
+}
+//--- Navigation
+
+nav {
+    text-align: right;
+    ul {
+        border-top: 6px solid $c_theme;
+        list-style-type: none;
+        padding: 0 7%; //1em;
+        li {
+            display: inline-block;
+            padding: 1em 0.5em;
+        }
+        li.active {
+            background-color: transparent;
+            background-image: $img_bg_nav_active;
+            a {
+                color: $c_nav_link_active;
+            }
+        }
+    }
+    a {
+        color: $c_nav_link;
+        text-decoration: none;
+        transition: color 0.5s ease;
+        &:hover {
+            color: $c_nav_link_hover;
+        }
+    }
+}
+
+.logo {
+    display: block;
+    width: 90px;
+    float: left;
+    clear: left;
+    margin-top: 1em;
+    margin-left: 7%;
+}
+
+
 
 //=== Large screen / wide desktop (lg) =========================================
 @media screen and (min-width: 1200px) {

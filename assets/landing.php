@@ -8,8 +8,8 @@
 
 return [
     'meta'        => [
-        'description' => 'landing page description',
-        'keywords'    => 'landing',
+        'description' => "",
+        'keywords'    => "",
     ],
     'css' => defined('PRODUCTION_MODE') ? 
         [ //--- Production:

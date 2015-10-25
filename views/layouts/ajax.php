@@ -3,6 +3,6 @@
     if (file_exists($contentFile)) { 
         include $contentFile; 
     } else {
-        echo '<h1>' . _('File not found') . '</h1>';
+        echo '<h2>' . _('File not found') . '</h2>';
     } 
 

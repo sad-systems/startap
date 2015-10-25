@@ -27,8 +27,8 @@ return [
     //--- Default Controller:
     'defaultRoute'  => 'site', 
     'controllerMap' => [
-        'site'   => 'controllers/DummyController',
-        'page'   => 'controllers/BackboneController',
+        'site'   => 'controllers/SiteController',
+        'page'   => 'controllers/PagesController',
     ],
     //--- Layouts:
     'layoutPath'  => $basePath . '/views/layouts',
