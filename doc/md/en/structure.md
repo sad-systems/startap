@@ -32,13 +32,14 @@ Here can be placed all automation scripts.
  * `update` - executes an update of package managers ([NodeJS](https://nodejs.org/), [Bower](http://bower.io) and [Composer](https://getcomposer.org)).
 It has several options:
 
-   | Option   | Command           | Description                                                         |
-   |----------|-------------------|---------------------------------------------------------------------|
-   | all      | `update all`      | Executes an update of all package managers                          |
-   | node     | `update node`     | Executes [NodeJS](https://nodejs.org/) only                         |
-   | bower    | `update bower`    | Executes [Bower](http://bower.io) only                              |
-   | composer | `update composer` | Executes [Composer](https://getcomposer.org) only                   |
-   | autoload | `update autoload` | Updates autoloader of classes [Composer](https://getcomposer.org)   |
+   | Option    | Command            | Description                                                         |
+   |-----------|--------------------|---------------------------------------------------------------------|
+   | all       | `update all`       | Executes an update of all package managers                          |
+   | node      | `update node`      | Executes [NodeJS](https://nodejs.org/) only                         |
+   | bower     | `update bower`     | Executes [Bower](http://bower.io) only                              |
+   | composer  | `update composer`  | Executes [Composer](https://getcomposer.org) only                   |
+   | autoload  | `update autoload`  | Updates autoloader of classes [Composer](https://getcomposer.org)   |
+   | templates | `update templates` | Updates the templates directory                                     |
 
  * `docs` - generates documentation automatically, which is based on the configuration files
     located in the directory [config](#config): 
@@ -49,6 +50,23 @@ It has several options:
    `config/tests.php`
 
  * `runtests` - to run automatic tests.
+
+ * `build` - to build application. This script is a "wrapper" for the [gulpjs](http://gulpjs.com). 
+    Parameters to build are stored in the file [gulpfile.js](../../../gulpfile.js).
+   `build` operates with parameter `PRODUCTION_MODE` (specified in the configuration file: [config/main.php](../../../config/main.php))
+   and in accordance with this runs:
+    - `gulp build` - to build the `PRODUCTION` version of application (if `PRODUCTION_MODE` is set);
+    - `gulp build-dev` - to build the `DEVELOP` version of application (if `PRODUCTION_MODE` is not set);
+
+    It is also possible to run `build` with the next parameters:
+
+    - `build css` - to build css-files only;
+    - `build js` - to build javascript-files only.
+
+> You can use `gulp` directly:
+> - `gulp build`, `gulp build-css`, `gulp build-js` - to build the `PRODUCTION` version of application
+> - `gulp build-dev`, `gulp build-css-dev`, `gulp build-js-dev` - to build the `DEVELOP` version of application
+
 
 ## config
 

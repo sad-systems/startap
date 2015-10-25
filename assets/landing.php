@@ -11,8 +11,14 @@ return [
         'description' => 'landing page description',
         'keywords'    => 'landing',
     ],
-    'css' => [
-    ],
-    'js'  => [
-    ],  
+    'css' => defined('PRODUCTION_MODE') ? 
+        [ //--- Production:
+        ] : 
+        [ //--- Develop:
+        ],
+    'js'  => defined('PRODUCTION_MODE') ? 
+        [ //--- Production:
+        ] :
+        [ //--- Develop:
+        ],  
 ];
