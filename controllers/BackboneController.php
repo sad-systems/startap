@@ -15,10 +15,10 @@
  * @author Digger <mrdigger@sad-systems.ru>
  * @copyright (c) 2015, SAD-Systems
  */
-class DummyController {
+class BackboneController {
     
     //--- Layout:
-    //public $layout        = 'main';
+    public $layout        = 'ajax-request';
     //--- Default Action:
     //public $defaultAction = 'index';
     
@@ -27,8 +27,8 @@ class DummyController {
      * 
      * @return string Name of View
      */
-    public function actionIndex() { return 'landing'; }
-
-    public function actionBackbone() { return 'backbone'; }
+    public function actionIndex() { return 'main'; }
+    public function actionMain()  { return 'main'; }
+    public function actionTest()  { return 'test'; }
     
 }
