@@ -14,7 +14,6 @@
 
     </div>
     <div>    
-    
         <img src="media/img/pics/img2.jpg" alt="Img1"/>
         <div class="typed">
             <h2>Team leader<h2/>

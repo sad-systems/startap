@@ -34,22 +34,24 @@
     }
   
     var settings = $.extend( {
-        autospeed: true,
-        interval : "10", //ms
-        pointer  : "█",
-        children : null
+        interval      : 50,   //ms
+        char_count    : 1,    //characters in time
+        pointer       : "█",
+        children      : null,
+        autospeed_max : 50,   //=0 - no autospeed
+        autospeed_len : 50
     }, options);
     
     var typeIt = function(el) {
         var $target = $(el);
-        var html = $target.html();
-        var text = $target.text();
+        var html    = $target.html();
+        var text    = $target.text();
         //--- Automatic interval:
-        if (settings.autospeed) {
-            if (text.length > 50) { 
-                settings.interval = 5; 
+        if (settings.autospeed_max) {
+            if (text.length > settings.autospeed_max) { 
+                settings.char_count = settings.autospeed_len;
             } else {
-                settings.interval = 50; 
+                settings.char_count = 1;
             }
         }
         //--- Insert pointer:
@@ -73,8 +75,8 @@
             if (cancel)  { finish(); return ; }
             if (!active) { finish(); return ; }
             if (position < text.length) {
-                $pointer.before(text.charAt(position));
-                position++;
+                $pointer.before(text.substr(position, settings.char_count)); // $pointer.before(text.charAt(position));
+                position += settings.char_count;                             // position++;
                 timeout_id = setTimeout(function() { typer(); }, settings.interval);
             } else {
                 finish();
@@ -84,7 +86,7 @@
         //--- Run:
         typer();        
     };
-    
+
     return this.each(function() {
         
         $this = $(this);
@@ -98,13 +100,15 @@
                 for (var i=0; i<$children.length; i++) {
                     if (i == $children.length-1) {
                         $($children[i]).one('end', function( event ){ 
-                            event.stopPropagation(); 
+                            event.stopPropagation();
+                            $this.trigger("endChild", [this]);
                             $this.trigger("end"); 
                         });
                     } else {
                         $children[i]._next = $children[i+1];
                         $($children[i]).one('end', function( event ){ 
-                            event.stopPropagation(); 
+                            event.stopPropagation();
+                            $this.trigger("endChild", [this]);
                             typeIt(this._next); 
                             delete this._next; 
                         });

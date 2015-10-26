@@ -26,6 +26,7 @@ return [
         ] :
         [ //--- Develop:
             'js/jquery.min.js',
+            'js/jquery-ui.min.js',
             'js/underscore-min.js',
             'js/backbone-min.js',
         //    'js/bootstrap.min.js',
