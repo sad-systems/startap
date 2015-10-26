@@ -32,10 +32,10 @@ a {
 header {
   background-color: transparent;
   background-image: url("../media/img/bg/bgb50p.png");
-  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
-  -khtml-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
+  -khtml-box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
   position: fixed;
   top: 0px;
   width: 100%;
@@ -44,10 +44,10 @@ header {
 footer {
   background-color: transparent;
   background-image: url("../media/img/bg/bgb50p.png");
-  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
-  -khtml-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
+  -khtml-box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
   position: fixed;
   bottom: 0px;
   width: 100%;
@@ -61,6 +61,10 @@ footer {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
   border-radius: 7px;
+  -webkit-box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
+  -khtml-box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
   position: absolute;
   top: 6em;
   left: 7%;
@@ -75,6 +79,10 @@ footer {
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
     border-radius: 7px;
+    -webkit-box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.75);
+    -moz-box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.75);
+    -khtml-box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.75);
+    box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.75);
     float: left;
     clear: left;
     margin-right: 2%;
@@ -126,8 +134,13 @@ nav {
 
 .logo {
   display: block;
-  width: 90px;
+  width: 140px;
   float: left;
   clear: left;
   margin-top: 1em;
-  margin-left: 7%; }
+  margin-left: 7%;
+  text-align: left; }
+
+.loader {
+  margin-left: 1em;
+  height: 30px; }

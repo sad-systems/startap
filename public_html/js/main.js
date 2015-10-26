@@ -13,15 +13,26 @@ $(function(){
     var config = {
         defaultPage     : "main",
         pagesBaseUrl    : "./page",
-        //pageContainerId : "#thePage",
         $thePage        : $(".page"),
+        $theLoader      : $(".loader"),
         pageTemplateId  : "#pageTemplate",
-        typewriterChildrenFilter : ".typed > *" // ">*"
+        typewriterChildrenFilter : ".typed > *", // ">*"
+        
+        chainShow_effect   : "fade",
+        chainShow_easing   : "easeOutQuad",
+        chainShow_duration : 1000
     };
     
     //=== Design ===============================================================
     
-    var main_title = document.title;
+    //--- Vars:
+    var main_title        = document.title;
+    var firstPageIsShowed = false;
+    var introIsShowing    = false;
+    
+    //--- Loader:
+    function showLoader() { config.$theLoader.css("display", ""); }
+    function hideLoader() { config.$theLoader.css("display", "none"); }
     
     //--- Set the page title:
     function setPageTitle(title) {
@@ -43,21 +54,22 @@ $(function(){
             parent.siblings().removeClass('active');
     }
     
-    //--- Intro:
-    var firstPageIsShowed = false;
-    var introIsShowing    = false;
-    
-    (function() {
-        introIsShowing = true;
-        //--- Intro body ---
-        var $header = $("header").css("display", "none");
-        var $footer = $("footer").css("display", "none");
-        var $page   = $(".page").css("display", "none");
-        $footer.effect("slide", {direction:"down"}, 500, function() {});
-        $header.effect("slide", {direction:"up"}, 500, function() { introIsShowing = false; });
-        //---
-    })();
-    
+    //--- Chain show:
+    function chainShow($el) {
+        if ($el.data("show")) {
+            var $showObj = $("[data-show-id=" + $el.data("show") + "]");
+            var effect   = $showObj.data("show-effect")   || config.chainShow_effect;
+            var easing   = $showObj.data("show-easing")   || config.chainShow_easing;
+            var duration = $showObj.data("show-duration") || config.chainShow_duration;
+            //--- Abort old running effect:
+            $showObj.stop();
+            //--- Start the new effect:
+            $showObj.effect(effect, {easing:easing}, duration, function(){
+                chainShow($showObj);
+            });
+        }        
+    }
+
     //--- Show page:
     function showPage($bufferEl) {
         
@@ -73,7 +85,7 @@ $(function(){
                 //--- Clear the page (from old data):
                 $page.html("");
                 //--- Show page:
-                $page.toggle("fade", {direction:"left"}, 500, function() {
+                $page.toggle("fade", {direction:"in"}, 500, function() {
                     //----------------------------------------------------------
                     //--- Hide output:
                     $page.css("display", "none");
@@ -84,17 +96,35 @@ $(function(){
                     //--- Set "finish" action on "click":
                     $page.one("click.typewriter", function() { $.fn.typewriter("finish"); });
                     hintShow();
+                    //--- Hide all elements with "data-show-id":
+                    $("[data-show-id]").css("display","none");
+                    
+                    /*
+                    //--- Show output:
+                    $page.css("display", "");
+                    //--- Start the chain:
+                    var $chain = $("[data-show]");
+                    chainShow($($chain[0]));
+                    */
+                   
                     //--- Start "typewriter":
                     $page.typewriter({interval:50, children:config.typewriterChildrenFilter}).one("end", function(){
                         $page.off("click.typewriter");
+                        $page.off("endChild.typewriter");
                         hintHide();
-                    }); //.on("endChild", function(event, child){ /*child*/ } );
+                    }).on("endChild.typewriter", function(event, child){ 
+                        //--- Start chain show:
+                        chainShow($(child));
+                    });
+                    
                     //----------------------------------------------------------
                 });                 
             };
             
             //--- Abort typewriter if it works:
             $page.typewriter("abort");
+            //--- Abort page animation:
+            $page.stop();
             //--- Display the page:
             if (!firstPageIsShowed) {
                 displayPage();
@@ -102,12 +132,27 @@ $(function(){
                 firstPageIsShowed = true;
             } else {
             //--- Hide old page:
-                $page.toggle("fade", {direction:"left"}, 500, function() {
+                $page.toggle("fade", {direction:"out"}, 500, function() {
                     displayPage();
                 });
             }
 
     }
+
+    //==========================================================================
+    // Intro 
+    //==========================================================================
+    
+    (function() {
+        introIsShowing = true;
+        //--- Intro body ---
+        var $header = $("header").css("display", "none");
+        var $footer = $("footer").css("display", "none");
+        var $page   = $(".page").css("display", "none");
+        $footer.effect("slide", {direction:"down"}, 500, function() {});
+        $header.effect("slide", {direction:"up"}, 500, function() { introIsShowing = false; });
+        //---
+    })();    
     
     //==========================================================================
     
@@ -167,8 +212,9 @@ $(function(){
         var page = SitePages.get(id);
         
         if (!page) { 
+            showLoader();
             page = SitePages.add({name: id});
-            page.once("change", function(){ currentPage.set("body", this.get("body")); });
+            page.once("change", function(){ hideLoader(); currentPage.set("body", this.get("body")); });
             page.fetch({
                 success: function (model, response, options) { 
                 },
