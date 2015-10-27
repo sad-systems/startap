@@ -14,6 +14,7 @@
 // @include opacity(0.95);
 // @include linear-gradient(red);
 // @include transition(color 1s ease);
+// @include font-face("Regular", "../fonts/regular-font", ('eot','ttf','woff'));
 
 //--- css-polyfills-file -------------------------------------------------------
 
@@ -108,4 +109,38 @@
      -moz-transition: $value;
      -o-transition: $value;
      transition: $value;
+}
+
+//--- font-face:
+
+$font-format-map: (eot: "embedded-opentype", ttf: "truetype");
+
+@function get-font-format($type) {
+    $_type : map-get($font-format-map, $type);
+    @if $_type {
+        @return $_type;
+    } @else {
+        @return $type;
+    }
+}
+
+@function get-font-url($fileBase, $type) {
+    $format : get-font-format($type);
+    $iefix  : '';
+    @if $type == 'eot' { $iefix  : '?#iefix'; }
+    @return url('#{$fileBase}.#{$type}#{$iefix}') format('#{$format}');
+}
+
+@mixin font-face($name, $fileBase, $types:('eot', 'woff2', 'woff', 'ttf', 'svg')) {
+    @font-face {
+        font-family: $name;
+        @each $type in $types {
+            @if $type == 'eot' {
+                src: url('#{$fileBase}.#{$type}');
+                src: get-font-url($fileBase, $type);
+            } @else {
+                src: get-font-url($fileBase, $type);
+            }
+        }
+  }
 }

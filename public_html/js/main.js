@@ -31,8 +31,14 @@ $(function(){
     var introIsShowing    = false;
     
     //--- Loader:
-    function showLoader() { config.$theLoader.css("display", ""); }
-    function hideLoader() { config.$theLoader.css("display", "none"); }
+    function showLoader() { 
+        //config.$theLoader.css("display", ""); 
+        config.$theLoader.attr({src: "media/img/loader/z145_red.gif", title: "Connecting..."});
+    }
+    function hideLoader() { 
+        //config.$theLoader.css("display", "none"); 
+        config.$theLoader.attr({src: "media/img/loader/z145.gif", title: "Connected"});
+    }
     
     //--- Set the page title:
     function setPageTitle(title) {
@@ -50,8 +56,11 @@ $(function(){
     function activatePageTab(id) {
         if (id === null) { id = ""; }
         var parent = $("a[href='#"+id+"']").parent('li');
+            //--- Deactivate all navigation items:
+            //parent.siblings().removeClass('active');
+            $("nav li").removeClass('active');
+            //--- Activate the item:
             parent.addClass('active');
-            parent.siblings().removeClass('active');
     }
     
     //--- Chain show:

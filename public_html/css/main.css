@@ -7,8 +7,8 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
-  color: #fff; }
+  font-family: "Regular", sans-serif;
+  color: #e0e0e0; }
 
 html, body {
   height: 100%; }
@@ -23,11 +23,14 @@ body {
   -o-background-size: cover;
   background-size: cover; }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #fff; }
+
 a {
   color: #56d4c7;
   transition: color 0.5s ease; }
   a:hover {
-    color: #a7e9e2; }
+    color: #d0f3ef; }
 
 header {
   background-color: transparent;
@@ -51,9 +54,20 @@ footer {
   position: fixed;
   bottom: 0px;
   width: 100%;
+  z-index: 100;
+  color: #56d4c7; }
+
+.copyright {
   padding: 1em;
   padding-left: 7%;
-  color: #56d4c7; }
+  display: block;
+  float: left;
+  clear: left;
+  text-align: left;
+  -moz-opacity: 0.25;
+  -khtml-opacity: 0.25;
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=25);
+  opacity: 0.25; }
 
 .page {
   background-color: transparent;
@@ -111,10 +125,12 @@ footer {
   .page .media-list > div {
     display: table-row; }
 
+header nav > ul {
+  border-top: 6px solid #56d4c7; }
+
 nav {
   text-align: right; }
   nav ul {
-    border-top: 6px solid #56d4c7;
     list-style-type: none;
     padding: 0 7%; }
     nav ul li {
@@ -126,11 +142,11 @@ nav {
       nav ul li.active a {
         color: #fff; }
   nav a {
-    color: #fff;
+    color: #56d4c7;
     text-decoration: none;
     transition: color 0.5s ease; }
     nav a:hover {
-      color: #56d4c7; }
+      color: #d0f3ef; }
 
 .logo {
   display: block;

@@ -5,8 +5,9 @@
  *==============================================================================
  */
 
-@import "basic";               //--- Digger basic mixins
+@import "basic";                 //--- Digger basic mixins
 //@import "bootstrap/normalize"; //--- Reset
+//@import "fonts";               //--- Fonts
 
 //------------------------------------------------------------------------------
 // Main definitions
@@ -19,7 +20,7 @@ $img_black_15: url("../media/img/bg/bgb15p.png");
 $img_black_25: url("../media/img/bg/bgb25p.png");
 $img_black_50: url("../media/img/bg/bgb50p.png");
 $img_black_75: url("../media/img/bg/bgb75p.png");
-//--- patterns
+//--- patterns:
 $img_ptblack_15: url("../media/img/bg/ptb15p.png");
 $img_ptblack_50: url("../media/img/bg/ptb50p.png");
 $img_ptblack_75: url("../media/img/bg/ptb75p.png");
@@ -31,18 +32,30 @@ $img_white_50: url("../media/img/bg/bgw50p.png");
 $img_white_75: url("../media/img/bg/bgw75p.png");
 $img_white_90: url("../media/img/bg/bgw90p.png");
 
+
+//--- fonts:
+
+//@include font-face("Regular", "../fonts/augusta/augusta_two", ('ttf'));
+//@include font-face("Regular", "../fonts/digital/micradi", ('ttf'));
+
+$font_header:  "Regular", sans-serif;
+$font_title:   "Regular", sans-serif;
+$font_regular: "Regular", sans-serif;
+
 //--- colors:
 $c_theme: #56d4c7;
-$c_text:  #fff;
+$c_header: #fff;
+$c_text:   darken($c_header, 12%);
 
 //--- text:
 $c_link:       $c_theme;
-$c_link_hover: lighten($c_theme, 20%);
+$c_link_hover: lighten($c_theme, 30%);
 $c_footer: $c_theme;
 
-$c_nav_link:        #fff;
-$c_nav_link_hover:  $c_theme;
-$c_nav_link_active: #fff;
+$c_nav_link:        $c_theme;
+$c_nav_link_hover:  lighten($c_theme, 30%);
+$c_nav_link_active: $c_header;
+
 //--- images:
 $img_body:      $img_banner;
 $img_bg_header: $img_black_50;
@@ -62,18 +75,25 @@ $img_bg_nav_active: $img_white_15;
 * {
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
+    font-family: $font_regular;
     color: $c_text;
 }
 
 html, body {
     height: 100%;
+    //font-size: 14px;
+    //font-size: 16px;
+    //font-size: 20px; 
 }
 
 body {
     background-color: transparent;
     background-image: $img_body;
     @include background-size(cover);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $c_header;
 }
 
 a { 
@@ -92,7 +112,6 @@ header {
     position: fixed;
     top: 0px;
     width: 100%;
-    //padding: 1em;
     z-index: 100;
 }
 
@@ -104,9 +123,19 @@ footer {
     position: fixed;
     bottom: 0px;
     width: 100%;
+    z-index: 100;
+    color: $c_footer;
+}
+.copyright {
     padding: 1em;
     padding-left: 7%;
-    color: $c_footer;
+    display: block;
+    //width: 200px;
+    float: left;
+    clear: left;
+    text-align: left;
+    //color: darken($c_text, 30%);
+    @include opacity(25);
 }
 
 .page {
@@ -174,10 +203,13 @@ footer {
 }
 //--- Navigation
 
+header nav > ul {
+        border-top: 6px solid $c_theme;
+} 
+
 nav {
     text-align: right;
     ul {
-        border-top: 6px solid $c_theme;
         list-style-type: none;
         padding: 0 7%; //1em;
         li {
