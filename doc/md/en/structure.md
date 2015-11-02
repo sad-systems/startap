@@ -101,7 +101,7 @@ creates the following files for domain `site`:
             site.po
 ~~~
 
-> To compile `.mo` files obtained from `.po` files use:
+> To compile `.po` files into `.mo` files use:
 > ~~~sh
 > $ ./gettext make
 > ~~~
