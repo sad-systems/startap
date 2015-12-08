@@ -1,15 +1,15 @@
 <?php
 /*==============================================================================
- *  Title      : Assets for backbone testing page
+ *  Title      : Assets for backbone test site
  *  Author     : Digger (c) SAD-Systems <http://sad-systems.ru>
  *  Created on : 01.09.2015
  *==============================================================================
  */
 
 return [
-    'title' => 'Backbone testing',
+    'title' => 'Backbone test site',
     'meta'        => [
-        'description' => 'Backbone testing',
+        'description' => 'Backbone test site',
         'keywords'    => 'Backbone',
     ],
     'css' => [ 

@@ -20,7 +20,7 @@ class DummyController {
     //--- Layout:
     //public $layout        = 'main';
     //--- Default Action:
-    //public $defaultAction = 'index';
+    public $defaultAction = 'backbone';
     
     /**
      * Simple action

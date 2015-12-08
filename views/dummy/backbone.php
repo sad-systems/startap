@@ -8,7 +8,7 @@
         <li><a href="#test">test page</a></li>
     </ul>
     
-    <div id="the_page" class="page well">...</div>
+    <div id="the_page" class="page">...</div>
 </div>
 
 <script id='pageTemplate' type='text/template'>
