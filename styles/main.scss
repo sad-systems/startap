@@ -1,46 +1,217 @@
 /*==============================================================================
  *  Title      : Main style file
  *  Author     : Digger (c) SAD-Systems <http://sad-systems.ru>
- *  Created on : 01.04.2015
+ *  Created on : 17.11.2015
  *==============================================================================
  */
 
 @import "basic";     //--- Digger basic mixins
 
-//------------------------------------------------------------------------------
+//==============================================================================
 // Main definitions
-//------------------------------------------------------------------------------
+//==============================================================================
 
 //------------------------------------------------------------------------------
+// Images
+//------------------------------------------------------------------------------
+
+//--- body:
+$img_1: url("../media/img/body-min.jpg");
+//--- transparent black:
+$img_black_15: url("../media/img/bg/bgb15p.png");
+$img_black_25: url("../media/img/bg/bgb25p.png");
+$img_black_50: url("../media/img/bg/bgb50p.png");
+$img_black_75: url("../media/img/bg/bgb75p.png");
+//--- patterns:
+$img_ptblack_15: url("../media/img/bg/ptbb15p.png");
+$img_ptblack_25: url("../media/img/bg/ptbb25p.png");
+$img_ptblack_50: url("../media/img/bg/ptbb50p.png");
+$img_ptblack_75: url("../media/img/bg/ptbb75p.png");
+$img_ptblack_90: url("../media/img/bg/ptb90p.png");
+//--- transparent white:
+$img_white_15: url("../media/img/bg/bgw15p.png");
+$img_white_25: url("../media/img/bg/bgw25p.png");
+$img_white_50: url("../media/img/bg/bgw50p.png");
+$img_white_75: url("../media/img/bg/bgw75p.png");
+$img_white_90: url("../media/img/bg/bgw90p.png");
+
+//--- site:
+$img_body: $img_1;
+
+//------------------------------------------------------------------------------
+// Fonts
+//------------------------------------------------------------------------------
+
+//@import url(https://fonts.googleapis.com/css?family=Play:400,700&subset=latin,cyrillic);
+//@include font-face("MyFont",   "../fonts/myfont/my-font", ('eot', 'ttf', 'otf', 'woff', 'svg'));
+
+$font_regular: "MyFont", sans-serif;
+$font_header:  "MyFont", sans-serif;
+$font_nav:     "MyFont", sans-serif;
+
+//------------------------------------------------------------------------------
+// Colors
+//------------------------------------------------------------------------------
+
+//--- main:
+$c_theme:  #76d0fe;
+$c_header: #fff;
+$c_text:   darken($c_header, 12%);
+
+//--- text:
+$c_link:          $c_theme;
+$c_link_hover:    lighten($c_theme, 30%);
+$c_link_external: #56d4c7;
+
+//--- navigation:
+$c_nav_link:        $c_theme;
+$c_nav_link_hover:  lighten($c_theme, 30%);
+$c_nav_link_active: $c_header;
+
+//--- table:
+$c_table_header: darken($c_text, 30%);
+
+//------------------------------------------------------------------------------
+// Margins & paddings
+//------------------------------------------------------------------------------
+
+//==============================================================================
 // Common styles
-//------------------------------------------------------------------------------
+//==============================================================================
 
-//------------------------------------------------------------------------------
+* {
+    padding: 0;
+    margin: 0;
+    font-family: $font_regular;
+    color: $c_text;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: transparent;
+    background-image: $img_body;
+    @include background-size(cover);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $c_header;
+    font-family: $font_header;
+}
+
+a { 
+    color: $c_link; 
+    transition: color 0.5s ease;
+    &:hover {
+        color: $c_link_hover;
+    }
+    
+    span {
+        color: $c_link; 
+        transition: color 0.5s ease;
+        &:hover {
+            color: $c_link_hover;
+        }
+    }
+}
+
+a[target] {
+    color: $c_link_external;
+    transition: color 0.5s ease;
+        &:hover {
+        color: $c_link_hover;
+    }
+    span {
+        color: $c_link_external; 
+        transition: color 0.5s ease;
+        &:hover {
+            color: $c_link_hover;
+        }
+    }
+}
+
+table {
+    th {
+        text-align:     center;
+        vertical-align: top;
+        color: $c_table_header;
+        & > * {
+            color: $c_table_header;
+        }
+
+    }
+    td {
+        vertical-align: top;
+    }
+}
+
+nav {
+    
+    text-align: right;
+    ul {
+        list-style-type: none;
+        li {
+            display: inline-block;
+        }
+        li.active {
+            a {
+                color: $c_nav_link_active;
+                span {
+                    color: $c_nav_link_active;
+                }
+            }
+        }
+    }
+    a {
+        color: $c_nav_link;
+        text-decoration: none;
+        transition: color 0.5s ease;
+        &:hover {
+            color: $c_nav_link_hover;
+        }
+        
+        span {
+            font-family: $font_nav;
+            font-size: 1em;
+            color: $c_nav_link; 
+            transition: color 0.5s ease;
+            &:hover {
+                color: $c_nav_link_hover;
+            }
+        }    
+        
+    }
+}
+
+//==============================================================================
 // Device dependent styles
-//------------------------------------------------------------------------------
+//==============================================================================
 
-//=== Large screen / wide desktop (lg) =========================================
+//--- Large screen / wide desktop (lg) -----------------------------------------
 @media screen and (min-width: 1200px) {
-
 }
 
-//=== Medium screen / desktop (md) =============================================
-@media screen and (min-width: 992px) {
-    
+//--- Normal screen ------------------------------------------------------------
+@media screen and (min-width: 1024px) {
 }
 
-//=== Small screen / tablet (sm) ===============================================
+
+//--- Medium screen / desktop (md) ---------------------------------------------
+@media screen and (min-width: 992px) {  
+}
+
+//--- Small screen / tablet (sm) -----------------------------------------------
 @media screen and (max-width: 768px) {
-    
 }
 
-//=== SMALL TABLET =============================================================
+//--- SMALL TABLET -------------------------------------------------------------
 @media screen and (max-width: 640px) {
-    
 }
 
-//=== Extra small screen / phone (sx) ==========================================
+//--- Extra small screen / phone (sx) ------------------------------------------
 @media screen and (max-width: 480px) {
-    
 }
     

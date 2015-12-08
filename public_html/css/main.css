@@ -1,6 +1,85 @@
 /*==============================================================================
  *  Title      : Main style file
  *  Author     : Digger (c) SAD-Systems <http://sad-systems.ru>
- *  Created on : 01.04.2015
+ *  Created on : 17.11.2015
  *==============================================================================
  */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "MyFont", sans-serif;
+  color: #e0e0e0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden; }
+
+body {
+  background-color: transparent;
+  background-image: url("../media/img/body-min.jpg");
+  -ms-behavior: url("css/polyfills/backgroundsize.min.htc");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -khtml-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #fff;
+  font-family: "MyFont", sans-serif; }
+
+a {
+  color: #76d0fe;
+  transition: color 0.5s ease; }
+  a:hover {
+    color: white; }
+  a span {
+    color: #76d0fe;
+    transition: color 0.5s ease; }
+    a span:hover {
+      color: white; }
+
+a[target] {
+  color: #56d4c7;
+  transition: color 0.5s ease; }
+  a[target]:hover {
+    color: white; }
+  a[target] span {
+    color: #56d4c7;
+    transition: color 0.5s ease; }
+    a[target] span:hover {
+      color: white; }
+
+table th {
+  text-align: center;
+  vertical-align: top;
+  color: #949494; }
+  table th > * {
+    color: #949494; }
+
+table td {
+  vertical-align: top; }
+
+nav {
+  text-align: right; }
+  nav ul {
+    list-style-type: none; }
+    nav ul li {
+      display: inline-block; }
+    nav ul li.active a {
+      color: #fff; }
+      nav ul li.active a span {
+        color: #fff; }
+  nav a {
+    color: #76d0fe;
+    text-decoration: none;
+    transition: color 0.5s ease; }
+    nav a:hover {
+      color: white; }
+    nav a span {
+      font-family: "MyFont", sans-serif;
+      font-size: 1em;
+      color: #76d0fe;
+      transition: color 0.5s ease; }
+      nav a span:hover {
+        color: white; }

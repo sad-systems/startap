@@ -20,7 +20,7 @@ $a = $argv[1];
 
 //--- Options:
 $o = [
-    '',
+    'all',
     'css',
     'js',
 ];
@@ -28,6 +28,12 @@ $o = [
 //--- Default option:
 if (!$a) {
     $a = $o[0];
+}
+
+//--- Unknown option:
+if (!in_array($a, $o)) { 
+    echo "Use options: \n\t". implode("\n\t", $o) . "\n(`" . $o[0] . "` by default)\n";
+    exit;
 }
 
 //--- Set application root:

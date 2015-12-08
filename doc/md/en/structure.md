@@ -7,6 +7,7 @@
  * [config](#config)/
  * [controllers](#controllers)/
  * [doc](#doc)/
+ * [lang](#lang)/
  * [lib](#lib)/
  * [models](#models)/
  * [publiс_html](#publiс_html)/
@@ -67,6 +68,45 @@ It has several options:
 > - `gulp build`, `gulp build-css`, `gulp build-js` - to build the `PRODUCTION` version of application
 > - `gulp build-dev`, `gulp build-css-dev`, `gulp build-js-dev` - to build the `DEVELOP` version of application
 
+ * `gettext` - to automatically generate translations using [gettext](http://www.gnu.org/software/gettext/).
+   `gettext` uses the parameter `textDomains` (specified in the configuration file: [config/main.php](../../../config/main.php)) 
+   to obtain a list of text domains used in application. For each text domain creates its own `.po` file in all
+   subdirectories of the root directory `lang` (or any other specified in parameter `root`). 
+   At the same time the original text strings for the translation will be automatically obtained from all files 
+   placed in directories, specified by `source` array.
+
+I.e. if you have the following `lang` directory structure:
+
+~~~
+ /lang
+    /en
+    /ru
+~~~
+
+the command: 
+
+~~~sh
+$ ./gettext
+~~~
+
+creates the following files for domain `site`:
+
+~~~
+ /lang
+    /en
+        /LC_MESSAGES
+            site.po
+    /ru
+        /LC_MESSAGES
+            site.po
+~~~
+
+> To compile `.po` files into `.mo` files use:
+> ~~~sh
+> $ ./gettext make
+> ~~~
+
+
 
 ## config
 
@@ -102,6 +142,21 @@ Directory structure:
 > Just add your demo files in this directory and they will appear in the menu of `index.php`. 
 > Note: the demo files are embedded in the "body" of html code of `index.php`.
 
+
+## lang
+
+Here can be placed translations of text messages.
+
+The structure of this directory is recommended to be in [gettext](http://www.gnu.org/software/gettext/) style:
+
+~~~
+ /lang
+    /en
+        /LC_MESSAGES
+    /ru
+        /LC_MESSAGES
+    ...
+~~~
 
 ## lib
 
