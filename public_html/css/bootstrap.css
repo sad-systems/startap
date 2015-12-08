@@ -6064,3 +6064,6 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+.jumbotron {
+  background-color: transparent; }
