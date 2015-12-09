@@ -7,6 +7,7 @@
  */
 
 return [
+    'title'       => 'Landing page',
     'meta'        => [
         'description' => 'landing page description',
         'keywords'    => 'landing',

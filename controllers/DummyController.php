@@ -20,7 +20,7 @@ class DummyController {
     //--- Layout:
     //public $layout        = 'main';
     //--- Default Action:
-    public $defaultAction = 'backbone';
+    // public $defaultAction = 'index';
     
     /**
      * Simple action
@@ -28,7 +28,5 @@ class DummyController {
      * @return string Name of View
      */
     public function actionIndex() { return 'landing'; }
-
-    public function actionBackbone() { return 'backbone'; }
     
 }

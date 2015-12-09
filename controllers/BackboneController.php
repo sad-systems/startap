@@ -27,8 +27,8 @@ class BackboneController {
      * 
      * @return string Name of View
      */
-    public function actionIndex() { return 'main'; }
-    public function actionMain()  { return 'main'; }
-    public function actionTest()  { return 'test'; }
+    public function actionIndex()  { return 'page1'; }
+    public function actionPage1()  { return 'page1'; }
+    public function actionPage2()  { return 'page2'; }
     
 }
