@@ -23,3 +23,7 @@ echo "Create Javascript docs:\n"
 system("jsdoc -c config/jsdoc-conf.json");
 echo "\n";
 echo "done\n";
+
+//--- Post doc operations:
+
+include "afterdoc.php";
